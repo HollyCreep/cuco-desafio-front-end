@@ -1,0 +1,13 @@
+
+Listagem de Clientes:
+  ☐ Lista de clientes com paginação
+  ☐ Opção de deletar um cliente
+  ☐ Botão de cadastro e edição de cliente
+  ☐ Input para busca de cliente por nome e/ou CPF
+  ☐ Atualização da lista após a busca
+
+Cadastro e Edição de Clientes:
+  ☐ Input para Nome (obrigatório)
+  ☐ Input para CPF (obrigatório)
+  ☐ Input para data nascimento (obrigatório)
+  ☐ Input para telefone (opcional)

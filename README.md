@@ -3,18 +3,19 @@
 ## Build Setup
 
 ```bash
+
+From Node v14.21.1
+
 # install dependencies
 $ yarn install
 
 # serve with hot reload at localhost:3000
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
+# generate static project for production and launch server
+$ yarn generate
 $ yarn start
 
-# generate static project
-$ yarn generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).

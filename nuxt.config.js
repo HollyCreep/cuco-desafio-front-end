@@ -4,10 +4,10 @@ export default {
   ssr: false,
 
   head: {
-    titleTemplate: '%s',
-    title: 'Cuco Health',
+    titleTemplate: 'CUCOHealth - %s',
+    title: 'CUCOHealth',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'pt',
     },
     meta: [
       { charset: 'utf-8' },
@@ -20,18 +20,27 @@ export default {
 
   css: [],
 
-  plugins: [],
+  plugins: [
+    '~/plugins/axios.ts',
+    '~/plugins/services.ts',
+    '~/plugins/i18n.ts',
+    '~/plugins/vee-validate.ts',
+  ],
 
   components: true,
 
-  buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/vuetify',
-  ],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify', 'nuxt-compress'],
 
-  modules: [
-    '@nuxtjs/axios',
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/i18n', 'nuxt-brotli'],
+
+
+  build: {},
+
+  publicRuntimeConfig: {
+    axios: {
+      apiURL: 'http://localhost:3003',
+    },
+  },
 
   axios: {
     baseURL: '/',
@@ -39,21 +48,36 @@ export default {
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
-    },
+    optionsPath: '~/plugins/vuetify.ts',
   },
 
-  build: {},
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        file: 'en.ts',
+        name: 'English',
+      },
+      {
+        code: 'es',
+        file: 'es.ts',
+        name: 'Español',
+      },
+      {
+        code: 'pt',
+        file: 'pt.ts',
+        name: 'Português',
+      },
+    ],
+    defaultLocale: 'pt',
+    langDir: '~locales/',
+    vueI18n: {
+      fallbackLocale: 'pt',
+      silentTranslationWarn: true,
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      redirectOn: 'root',
+    },
+  },
 }
