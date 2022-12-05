@@ -23,7 +23,7 @@ export default {
     '~/plugins/services.ts',
     '~/plugins/i18n.ts',
     '~/plugins/vee-validate.ts',
-    '~/plugins/vue-the-mask.js',
+    '~/plugins/vue-the-mask.ts',
   ],
 
   components: {

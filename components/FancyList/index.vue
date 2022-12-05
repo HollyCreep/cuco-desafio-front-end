@@ -1,40 +1,37 @@
 <template>
   <section>
-    <ul class="ch-fancy-list">
-      <li style="padding: 0 30px">
+    <TransitionGroup name="list" tag="ul" mode="out-in" class="ch-fancy-list">
+      <li style="padding: 0 30px" key="fancy-item-header">
         <v-row class="body--text" no-gutters justify="space-between" align="center">
           <v-col cols="auto">
-            <v-checkbox color="secondary" v-model="selectAll" @change="handleSelectAll"></v-checkbox>
+            <v-checkbox color="secondary" v-model="selectAll" @change="handleToggleAll"></v-checkbox>
           </v-col>
           <v-col cols="10" md="4">Nome</v-col>
           <v-col cols="12" md="3">Data de Nascimento</v-col>
           <v-col cols="12" md="2">Telefone</v-col>
           <v-col cols="12" md="auto">
-            <v-btn color="secondary" @click="handleDeleteItems">
+            <v-btn color="error" @click="handleDeleteItems">
               <v-icon>{{mdiTrashCan}}</v-icon>Excluir
             </v-btn>
           </v-col>
         </v-row>
       </li>
-      <li v-for="(item, index) in items" :key="`fancy-item-${index}`">
-        <FancyListItem
-          :customer="item"
-          :ref="`fancy-item-${index}`"
-          @change="handleItemChanged($event, index)"
-        />
+      <li v-for="(item) in items" :key="`fancy-item-${item.id}`">
+        <FancyListItem :customer="item" :selected.sync="selectedItems[item.id]" />
       </li>
-    </ul>
-    <v-dialog v-model="openModal" width="500">
-      <v-card>
-        <v-card-title class="text-h5 grey lighten-2">Privacy Policy</v-card-title>
+    </TransitionGroup>
+    <v-dialog v-model="openModal" width="400">
+      <v-card class="text-center pa-6">
+        <v-avatar size="48" color="warning">
+          <v-icon color="warning darken-1" size="20">{{mdiAlert}}</v-icon>
+        </v-avatar>
+        <v-card-title class="justify-center font-inter text-subtitle-1 font-weight-500">Atenção</v-card-title>
 
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</v-card-text>
-
-        <v-divider></v-divider>
+        <v-card-text>Você tem certeza que quer excluir os cliente(s) selecionado(s)?</v-card-text>
 
         <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="openModal = false">I accept</v-btn>
+          <v-btn class="flex-grow-1" color="body" text @click="openModal = false">Cancelar</v-btn>
+          <v-btn class="flex-grow-1" color="error" @click="openModal = false">Excluir</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -46,7 +43,7 @@ import { Component, Prop } from 'vue-property-decorator'
 import { ICustomer } from '~/types/interfaces'
 import { BaseComponent } from '~/utils/classes'
 import FancyListItem from './item.vue'
-import { mdiTrashCan } from '@mdi/js'
+import { mdiTrashCan, mdiAlert } from '@mdi/js'
 import { PropType } from 'vue/types/v3-component-props'
 
 @Component<FancyList>({
@@ -58,38 +55,19 @@ export default class FancyList extends BaseComponent {
   @Prop({ type: Array as PropType<ICustomer[]>, required: true })
   readonly items!: ICustomer[]
 
-  $refs!: {
-    'fancy-item-0': FancyListItem[]
-    'fancy-item-1': FancyListItem[]
-    'fancy-item-2': FancyListItem[]
-    'fancy-item-3': FancyListItem[]
-    'fancy-item-4': FancyListItem[]
-  }
-
   selectAll = false
   openModal = false
   mdiTrashCan = mdiTrashCan
+  mdiAlert = mdiAlert
 
-  selectedItems: string[] = []
+  selectedItems: Record<string, boolean> = {}
 
-  handleSelectAll() {
-    this.selectedItems = this.selectAll ? this.items.map((c) => c.id) : []
-
-    Object.entries(this.$refs).forEach(([_key, [fancyItem]]) =>
-      fancyItem.toggleSelected(this.selectAll)
-    )
-  }
-
-  handleItemChanged(value: Boolean, index: number) {
-    const { id } = this.items[index]
-    const uniqArray = new Set(this.selectedItems)
-    value ? uniqArray.add(id) : uniqArray.delete(id)
-
-    this.selectedItems = [...uniqArray]
+  handleToggleAll() {
+    this.items.forEach(({ id }) => (this.selectedItems[id] = this.selectAll))
   }
 
   handleDeleteItems() {
-    this.selectedItems.length && (this.openModal = true)
+    this.selectedItems && (this.openModal = true)
   }
 }
 </script>
@@ -101,5 +79,15 @@ export default class FancyList extends BaseComponent {
   flex-direction: column;
   gap: 1rem;
   padding: initial;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

@@ -42,7 +42,9 @@ export const actions: ActionTree<State, State> & ActionsInterface = {
     )
       await commit(Mutations.SET_ROUTE_FRINDLY_NAME, config.name)
 
-    if (Object.hasOwnProperty.call(config, 'showButton'))
-      await commit(Mutations.SET_SHOW_CREATE_CUSTOMER_BUTTON, config.showButton)
+    await commit(
+      Mutations.SET_SHOW_CREATE_CUSTOMER_BUTTON,
+      !!config?.showButton
+    )
   },
 }

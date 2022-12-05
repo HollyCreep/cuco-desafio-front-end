@@ -18,7 +18,6 @@ import { IRouteMetaConfig } from '~/types/interfaces'
   meta: {
     config: {
       name: 'c.create_customer',
-      showButton: true,
     } as IRouteMetaConfig,
   },
 })

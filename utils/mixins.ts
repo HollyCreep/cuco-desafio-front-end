@@ -2,6 +2,12 @@ import Vue from 'vue'
 import { Prop, Component } from 'vue-property-decorator'
 import { IColor } from '~/types/interfaces'
 
+/* ----------------------------------- Bad Practice, but Vue-the-mask doesn't export masker function ---------------------------------- */
+// @ts-ignore
+import masker from 'vue-the-mask/src/masker'
+// @ts-ignore
+import { tokens } from 'vue-the-mask'
+
 @Component({})
 export class ColorsMixin extends Vue {
   @Prop({ type: String, default: 'primary' })
@@ -31,5 +37,15 @@ export class ColorsMixin extends Vue {
     } catch (error) {
       return cor
     }
+  }
+}
+
+@Component({})
+export class Masker extends Vue {
+  masker(value: string, mask: string[]) {
+    return masker(value, mask, true, tokens)
+  }
+  unmasker(value: string, mask: string[]) {
+    return masker(value, mask, false, tokens)
   }
 }

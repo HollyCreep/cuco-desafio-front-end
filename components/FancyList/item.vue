@@ -5,7 +5,7 @@
         <v-checkbox
           color="secondary"
           v-model="innerSelected"
-          @change="$emit('change', innerSelected)"
+          @change="$emit('update:selected', innerSelected)"
           hide-details
           class="py-0 my-0"
         ></v-checkbox>
@@ -63,10 +63,6 @@ export default class FancyListItem extends BaseComponent {
 
   toggleSelected(value: boolean) {
     this.innerSelected = value
-  }
-
-  handleClick() {
-    this.$toast.success('Teste')
   }
 }
 </script>

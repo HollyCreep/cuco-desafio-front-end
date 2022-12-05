@@ -46,7 +46,7 @@
       </v-row>
     </v-form>
     <v-layout row justify-end>
-      <v-btn class="mr-8 body--text" :disabled="loading" @click="clear">Cancelar</v-btn>
+      <v-btn class="mr-8 body--text" :disabled="loading" text nuxt to="/">Cancelar</v-btn>
       <v-btn
         color="tertiary"
         class="white--text font-weight-semi-bold"

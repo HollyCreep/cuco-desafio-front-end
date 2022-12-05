@@ -21,7 +21,8 @@
       "@nuxtjs/axios",
       "@types/node",
       "@nuxtjs/vuetify",
-      "@nuxtjs/i18n"
+      "@nuxtjs/i18n",
+      "@types/vue-the-mask"
     ],
     "typeRoots": ["./node_modules/@types", "./types/modules"]
   },

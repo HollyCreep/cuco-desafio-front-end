@@ -18,7 +18,6 @@ import { IRouteMetaConfig } from '~/types/interfaces'
   meta: {
     config: {
       name: 'e.edit_customer',
-      showButton: true,
     } as IRouteMetaConfig,
   },
   async asyncData({ params, $http }) {
