@@ -1,12 +1,21 @@
-import { Store as VuexStore, CommitOptions, DispatchOptions } from 'vuex'
+import {
+  Store as VuexStore,
+  CommitOptions,
+  DispatchOptions,
+  ActionContext,
+} from 'vuex'
 import Mutations from './-mutations'
 import { ThemeState } from './theme'
 import { AuthState } from './auth'
 import { AccesibilityState } from './accesibility'
-import { Locale } from '~/types'
+import { Locale, Page } from '~/types'
+import Actions from './-actions'
+import { IRouteMetaConfig } from '~/types/interfaces'
 
 export interface RootState {
   locale: Locale
+  showCreateCustomerButton: Boolean
+  routeFriendlyName?: Page
 }
 
 export interface Getters {
@@ -15,11 +24,16 @@ export interface Getters {
 
 export interface MutationsInterface {
   [Mutations.SET_LOCALE](s: State, p: Locale): void
+  [Mutations.SET_ROUTE_FRINDLY_NAME](s: State, p?: Page): void
+  [Mutations.SET_SHOW_CREATE_CUSTOMER_BUTTON](s: State, p: Boolean): void
 }
 
-export enum Actions {}
-
-export interface ActionsInterface {}
+export interface ActionsInterface {
+  [Actions.SET_ROUTE_CONFIG](
+    context: ActionContext<State, State>,
+    p: IRouteMetaConfig
+  ): void
+}
 
 export type StoreModules = {
   auth: RootStoreModuleTypes<AuthState>

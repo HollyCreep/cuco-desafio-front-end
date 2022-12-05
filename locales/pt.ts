@@ -1,9 +1,14 @@
 const pt = {
   a: {},
   b: {},
-  c: {},
+  c: {
+    create_customer: 'Novo @:c.customer',
+    customer: 'Cliente | Clientes',
+  },
   d: {},
-  e: {},
+  e: {
+    edit_customer: 'Editar @:c.customer',
+  },
   f: {},
   g: {},
   h: {},

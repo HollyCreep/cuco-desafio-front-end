@@ -2,12 +2,12 @@
 Listagem de Clientes:
   ☐ Lista de clientes com paginação
   ☐ Opção de deletar um cliente
-  ☐ Botão de cadastro e edição de cliente
+  ✔ Botão de cadastro e edição de cliente @done(22-12-04 23:33)
   ☐ Input para busca de cliente por nome e/ou CPF
   ☐ Atualização da lista após a busca
 
 Cadastro e Edição de Clientes:
-  ☐ Input para Nome (obrigatório)
-  ☐ Input para CPF (obrigatório)
-  ☐ Input para data nascimento (obrigatório)
-  ☐ Input para telefone (opcional)
+  ✔ Input para Nome (obrigatório) @done(22-12-04 23:33)
+  ✔ Input para CPF (obrigatório) @done(22-12-04 23:33)
+  ✔ Input para data nascimento (obrigatório) @done(22-12-04 23:33)
+  ✔ Input para telefone (opcional) @done(22-12-04 23:33)

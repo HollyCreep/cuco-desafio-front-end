@@ -3,9 +3,14 @@ import { Translator } from './pt'
 const en: Translator = {
   a: {},
   b: {},
-  c: {},
+  c: {
+    create_customer: 'New @:c.customer',
+    customer: 'Customer | Customer',
+  },
   d: {},
-  e: {},
+  e: {
+    edit_customer: 'Edit @:c.customer',
+  },
   f: {},
   g: {},
   h: {},

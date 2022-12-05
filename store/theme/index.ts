@@ -14,12 +14,28 @@ export const state = (): ThemeState => ({
   dark: false,
   themes: {
     dark: {
-      primary: '#9C27B0',
-      secondary: '#009688',
+      primary: '#2095F2',
+      secondary: '#EE2279',
+      tertiary: '#12A454',
+      heading: '#363F5F',
+      body: '#969CB2',
+      background: '#F0F2F5',
+      warning: {
+        base: '#FEEBC8',
+        darken1: '#DD6B20',
+      },
     },
     light: {
       primary: '#2095F2',
       secondary: '#EE2279',
+      tertiary: '#12A454',
+      heading: '#363F5F',
+      body: '#969CB2',
+      background: '#F0F2F5',
+      warning: {
+        base: '#FEEBC8',
+        darken1: '#DD6B20',
+      },
     },
   },
 })

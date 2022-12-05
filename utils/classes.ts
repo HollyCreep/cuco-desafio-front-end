@@ -1,7 +1,14 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { MetaInfo } from 'vue-meta'
 import { ValidationObserver } from 'vee-validate'
-import { Locale, Page as IPage } from '~/types'
+import { Locale } from '~/types'
+import ROUTES from '~/types/constants/routes'
+@Component({})
+export class BaseComponent extends Vue {
+  get routes() {
+    return {...ROUTES}
+  }
+}
 
 @Component({})
 export class ResponsiveComponent extends Vue {
@@ -44,17 +51,6 @@ abstract class AbstractPage extends ResponsiveComponent {
 
 // @ts-ignore
 @Component({})
-abstract class AbstractPageSection extends ResponsiveComponent {
-  abstract page: IPage
-  abstract section: Number
-
-  get translatorKey(): string {
-    return `${this.page}.${this.section}`
-  }
-}
-
-// @ts-ignore
-@Component({})
 abstract class abstractForm extends ResponsiveComponent {
   valid: boolean = false
   loading: boolean = false
@@ -63,9 +59,9 @@ abstract class abstractForm extends ResponsiveComponent {
     obs: InstanceType<typeof ValidationObserver>
   }
 
-  async submit() {
+  async handleSubmit() {
     if (await this.validate()) {
-      this.save()
+      this.submit()
     }
   }
 
@@ -79,14 +75,12 @@ abstract class abstractForm extends ResponsiveComponent {
     this.$refs.obs && this.$refs.obs.reset()
   }
 
-  abstract save(): void
+  abstract submit(): void
   abstract clear(): void
 }
 
 // We export this way, so components can extend directly or with mixin()
 // @ts-ignore
 export class Page extends AbstractPage {}
-// @ts-ignore
-export class PageSection extends AbstractPageSection {}
 // @ts-ignore
 export class BaseForm extends abstractForm {}

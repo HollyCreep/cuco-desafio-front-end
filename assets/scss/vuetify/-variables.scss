@@ -1,0 +1,89 @@
+/* --------------------------------- Global --------------------------------- */
+$font-size-root: 16px;
+$body-font-family: var(--body-font-family);
+$heading-font-family: var(--heading-font-family);
+
+/* ------------------------------ Button Styles ----------------------------- */
+$btn-text-transform: initial;
+$btn-font-weight: 600;
+$btn-font-sizes: (
+  'default': 1.125rem,
+);
+
+/* ------------------------------- Pagination ------------------------------- */
+$pagination-border-radius: 6px;
+$pagination-item-font-size: 0.75rem;
+$pagination-item-height: 1.5rem;
+$pagination-item-min-width: 1.5rem;
+$pagination-more-height: 1.5rem;
+$pagination-more-width: 1.5rem;
+$pagination-navigation-height: 1.5rem;
+$pagination-navigation-width: 1.5rem;
+
+/* ------------------------------- Typography ------------------------------- */
+
+$headings: (
+  'h1': (
+    'size': clamp(2rem, 4vw, 3rem),
+    'weight': 300,
+    'line-height': clamp(2.5rem, 4vw, 3.5rem),
+  ),
+  'h2': (
+    'size': clamp(1.5rem, 4vw, 2.5rem),
+    'weight': 300,
+    'line-height': clamp(2rem, 4vw, 3rem),
+  ),
+  'h3': (
+    'size': 2rem,
+    'weight': 300,
+    'line-height': 2.5rem,
+  ),
+  'h4': (
+    'size': 1.5rem,
+    'weight': 300,
+    'line-height': 2rem,
+  ),
+  'h5': (
+    'size': 1.25rem,
+    'weight': 300,
+    'line-height': 1.5rem,
+  ),
+  'h6': (
+    'size': clamp(0.875rem, 4vw, 1.25rem),
+    'weight': 300,
+    'line-height': clamp(1.25rem, 4vw, 1.5rem),
+  ),
+  'subtitle-1': (
+    'size': 1.125rem,
+    'weight': 300,
+  ),
+  'body': (
+    'size': 1rem,
+    'weight': 300,
+    'line-height': 1.5rem,
+  ),
+  'body-1': (
+    'size': 0.875rem,
+    'weight': 300,
+    'line-height': 1.5rem,
+  ),
+  'body-2': (
+    'size': 0.75rem,
+    'weight': 300,
+    'line-height': 1rem,
+  ),
+  'button': (
+    'size': 1.125rem,
+    'weight': 600,
+    'line-height': 1.75rem,
+    'font-family': 'Inter',
+    'text-transform': initial,
+  ),
+  caption: (
+    'size': 0.625rem,
+    'weight': 300,
+    'line-height': 0.875rem,
+  ),
+);
+
+@import '~vuetify/src/styles/styles.sass';

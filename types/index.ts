@@ -3,17 +3,15 @@ import { Locales } from './enums'
 import { IColor } from './interfaces'
 import { RecursiveKeyOf, ValueOf } from './utils'
 import { Translator } from '~/locales/pt'
-import ROUTES, { Pages } from '~/types/constants/routes'
+import { PAGES } from '~/types/constants/routes'
 
 export type Color = IColor | string
 
-export type Page = ValueOf<typeof Pages>
+export type Page = ValueOf<typeof PAGES>
 
 export type Theme = Record<string, Color>
 
 export type Locale = keyof Record<Locales, string>
-
-export type RouteLink = ValueOf<typeof ROUTES>
 
 export type TranslatorKeys = RecursiveKeyOf<Translator>
 

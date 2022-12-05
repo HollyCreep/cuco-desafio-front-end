@@ -1,0 +1,31 @@
+@import './-variables.scss';
+@import './-mixins.scss';
+@import './vuetify/-overrides.scss';
+
+.v-application {
+  .ch-container {
+    width: calc(100% - #{$container-spacing} * 2);
+    @include container-base-styles;
+
+    &-fluid {
+      width: 100%;
+      padding-right: $container-spacing;
+      padding-left: $container-spacing;
+      @include container-base-styles;
+    }
+
+    &-inset {
+      width: calc(100% - #{$container-spacing} * 4);
+      @include container-base-styles;
+    }
+  }
+
+  .font- {
+    &poppins {
+      font-family: 'Poppins' !important;
+    }
+    &inter {
+      font-family: 'Inter' !important;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Theme } from '.'
+import { Theme, TranslatorKeys } from '.'
 
 export interface IColor {
   base: string
@@ -13,4 +13,20 @@ export interface IColor {
 export interface IThemes {
   light: Theme
   dark: Theme
+}
+
+export interface IRouteMetaConfig {
+  name?: TranslatorKeys
+  showButton?: boolean
+}
+
+export interface INewCustomer {
+  name: string
+  cpf: string
+  birthdate: string
+  phone: string
+}
+
+export interface ICustomer extends INewCustomer {
+  id: string
 }

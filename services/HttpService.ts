@@ -1,24 +1,29 @@
+import { AxiosResponse } from 'axios'
 import { NuxtRuntimeConfig } from '@nuxt/types/config/runtime'
 import { NuxtAxiosInstance } from '@nuxtjs/axios'
+import { ICustomer, INewCustomer } from '~/types/interfaces'
 
-export type ApiError400ResponseDTO = {
-  timestamp: string
-  status: number
-  error: string
-  message: string
-  path: string
+type APIResponseHeaders = {
+  'cache-control': string
+  'content-type': string
+  expires: string
+  link: string
+  pragma: string
+  'x-total-count': string
 }
-
-export type ApiResponse = ApiError400ResponseDTO | string
-
-export interface SendEmailParams {
-  sendto: string
-  from: string
-  assunto: string
-  bodyhtml: string
+interface GetCustomersResponse extends AxiosResponse<ICustomer[]> {
+  headers: APIResponseHeaders
 }
+type GetCustomersRequest = (
+  params?: Record<string, string | number>
+) => Promise<GetCustomersResponse>
 
-type SendEmailRequest = (params: SendEmailParams) => Promise<ApiResponse>
+type CreateCustomerRequest = (customer: INewCustomer) => Promise<ICustomer>
+type UpdateCustomerRequest = (customer: ICustomer) => Promise<ICustomer>
+
+type PatchCustomerRequest = (
+  customer: Partial<ICustomer> & { id: string }
+) => Promise<ICustomer>
 
 export default class HttpService {
   private axios: NuxtAxiosInstance
@@ -29,11 +34,23 @@ export default class HttpService {
     this.config = $config
   }
 
-  sendEmail: SendEmailRequest = (params) => {
-    const data = new FormData()
-    Object.entries(params).forEach(([key, val]) => {
-      data.append(key, val)
-    })
-    return this.axios.$post('/api-mensagem/1.0/email/sendEmail', data)
+  getCustomers: GetCustomersRequest = (params) => {
+    return this.axios.get('clients', { params })
+  }
+
+  getCustomerByID = (id: string | number): Promise<ICustomer | {}> => {
+    return this.axios.$get(`clients/${id}`)
+  }
+
+  createCustomer: CreateCustomerRequest = (customer) => {
+    return this.axios.$post(`clients`, customer)
+  }
+
+  updateCustomer: UpdateCustomerRequest = ({ id, ...props }) => {
+    return this.axios.$put(`clients/${id}`, props)
+  }
+
+  updateCustomerPartial: PatchCustomerRequest = ({ id, ...props }) => {
+    return this.axios.$patch(`clients/${id}`, props)
   }
 }

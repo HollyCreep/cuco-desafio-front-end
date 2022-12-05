@@ -4,6 +4,8 @@ import ThemeMutations from './theme/-mutations'
 
 enum Mutations {
   'SET_LOCALE' = 'SET_LOCALE',
+  'SET_ROUTE_FRINDLY_NAME' = 'SET_ROUTE_FRINDLY_NAME',
+  'SET_SHOW_CREATE_CUSTOMER_BUTTON' = 'SET_SHOW_CREATE_CUSTOMER_BUTTON',
 }
 
 export default {

@@ -1,5 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
   ssr: false,
 
@@ -18,36 +16,47 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: [],
+  css: ['~/assets/scss/main.scss'],
 
   plugins: [
     '~/plugins/axios.ts',
     '~/plugins/services.ts',
     '~/plugins/i18n.ts',
     '~/plugins/vee-validate.ts',
+    '~/plugins/vue-the-mask.js',
   ],
 
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/base',
+      '~/components/inputs',
+    ],
+  },
 
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify', 'nuxt-compress'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify', 'nuxt-compress', '@nuxtjs/google-fonts'],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/i18n', 'nuxt-brotli'],
-
+  modules: ['@nuxtjs/axios', '@nuxtjs/i18n', 'vue-toastification/nuxt', 'nuxt-brotli'],
 
   build: {},
 
   publicRuntimeConfig: {
     axios: {
-      apiURL: 'http://localhost:3003',
+      browserBaseURL: 'http://localhost:3003',
     },
   },
 
-  axios: {
-    baseURL: '/',
+  router: {
+    middleware: ['handleRouteMeta', 'localeValidation'],
   },
 
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
+    customVariables: ['~/assets/scss/vuetify/-variables.scss'],
+    defaultAssets: {
+      font: false,
+      icons: 'mdiSvg',
+    },
     optionsPath: '~/plugins/vuetify.ts',
   },
 
@@ -78,6 +87,24 @@ export default {
     detectBrowserLanguage: {
       useCookie: true,
       redirectOn: 'root',
+    },
+  },
+
+  googleFonts: {
+    families: {
+      Inter: {
+        wght: [400, 500, 600],
+        ital: [],
+      },
+      Poppins: {
+        wght: [400, 600],
+        ital: [],
+      },
+      Roboto: {
+        wght: [700],
+        ital: [],
+      },
+
     },
   },
 }
