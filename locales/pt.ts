@@ -31,8 +31,12 @@ const pt = {
   y: {},
   z: {},
 
-  errors: {},
-  messages: {},
+  errors: {
+    delete: 'Não foi possível excluir o {0}',
+  },
+  messages: {
+    delete: '{0} excluído com sucesso!',
+  },
 }
 export default pt
 

@@ -1,7 +1,7 @@
 
 Listagem de Clientes:
   ✔ Lista de clientes com paginação @done(22-12-05 00:19)
-  ☐ Opção de deletar um cliente
+  ✔ Opção de deletar um cliente @done(22-12-06 16:25)
   ✔ Botão de cadastro e edição de cliente @done(22-12-04 23:33)
   ✔ Input para busca de cliente por nome e/ou CPF @done(22-12-05 01:42)
   ✔ Atualização da lista após a busca @done(22-12-05 01:42)

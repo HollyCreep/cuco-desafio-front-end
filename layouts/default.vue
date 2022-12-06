@@ -6,23 +6,26 @@
         <Nuxt />
       </div>
     </v-main>
+    <v-overlay :value="loading">
+      <v-progress-circular indeterminate size="50"></v-progress-circular>
+    </v-overlay>
   </v-app>
 </template>
 
-<script>
-export default {
-  name: 'DefaultLayout',
-}
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import { mapGetters } from 'vuex'
+
+@Component({
+  computed: {
+    ...mapGetters(['loading']),
+  },
+})
+export default class DefaultLayout extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-// header {
-//   z-index: 1;
-// }
-
-// .background {
-//   z-index: 1;
-// }
 .ch-container {
   transform: translateY(-2rem);
   align-content: flex-start;

@@ -53,4 +53,16 @@ export default class HttpService {
   updateCustomerPartial: PatchCustomerRequest = ({ id, ...props }) => {
     return this.axios.$patch(`clients/${id}`, props)
   }
+
+  deleteCustomer = (id: string) => {
+    return this.axios.$delete(`clients/${id}`)
+  }
+
+  batchDeleteCustomer = (ids: string[]) => {
+    return Promise.allSettled(
+      ids.map(async (id) => this.deleteCustomer(id))
+    ).then((result) =>
+      result.flatMap((r) => (r.status === 'fulfilled' ? r : []))
+    )
+  }
 }

@@ -11,18 +11,23 @@ import Mutations from './-mutations'
 import Actions from './-actions'
 
 export const state = (): RootState => ({
+  loading: false,
   locale: Locales.pt,
   routeFriendlyName: undefined,
   showCreateCustomerButton: false,
 })
 
 export const getters: GetterTree<State, State> & Getters = {
+  loading: (state) => state.loading,
   locale: (state) => state.locale,
   routeFriendlyName: (state) => state.routeFriendlyName,
   showCreateCustomerButton: (state) => state.showCreateCustomerButton,
 }
 
 export const mutations: MutationTree<State> & MutationsInterface = {
+  [Mutations.SET_LOADING](state, payload) {
+    state.loading = payload
+  },
   [Mutations.SET_LOCALE](state, newLocale) {
     state.locale = newLocale
   },
