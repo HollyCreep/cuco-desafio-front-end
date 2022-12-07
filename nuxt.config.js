@@ -42,7 +42,7 @@ export default {
 
   publicRuntimeConfig: {
     axios: {
-      browserBaseURL: 'http://localhost:3003',
+      browserBaseURL: 'https://json-server-two-mocha.vercel.app',
     },
   },
 
