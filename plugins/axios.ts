@@ -2,7 +2,11 @@ import { Plugin } from '@nuxt/types'
 import { AxiosError } from 'axios'
 import Mutations from '~/store/-mutations'
 
-const axios: Plugin = ({ $toast, $axios, $config, store, i18n }) => {
+const axios: Plugin = ({ $toast, $axios, $config, store, i18n, isDev }) => {
+  $axios.setBaseURL(
+    isDev ? 'http://localhost:3003' : 'https://json-server-two-mocha.vercel.app'
+  )
+
   $axios.onRequest(() => store.commit(Mutations.SET_LOADING, true))
   $axios.onResponse(() => store.commit(Mutations.SET_LOADING, false))
   $axios.onError(() => store.commit(Mutations.SET_LOADING, false))

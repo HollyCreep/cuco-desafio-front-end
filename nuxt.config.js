@@ -42,12 +42,6 @@ export default {
 
   build: {},
 
-  publicRuntimeConfig: {
-    axios: {
-      browserBaseURL: 'https://json-server-two-mocha.vercel.app',
-    },
-  },
-
   router: {
     middleware: ['handleRouteMeta', 'localeValidation'],
   },
