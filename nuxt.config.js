@@ -88,7 +88,7 @@ export default {
       silentTranslationWarn: true,
     },
     detectBrowserLanguage: {
-      useCookie: true,
+      useCookie: false,
       redirectOn: 'root',
     },
   },

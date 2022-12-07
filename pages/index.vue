@@ -40,7 +40,7 @@
         </div>
       </template>
       <template #no-data>
-        <v-layout row justify-center v-show="!$fetch.pending">
+        <v-layout row justify-center v-show="!$fetch.pending && !loading">
           <p class="text-body" v-text="$t('messages.no_data')"></p>
         </v-layout>
       </template>
@@ -74,6 +74,7 @@ import { mdiAlert, mdiMagnify } from '@mdi/js'
 import { mixins } from 'vue-class-component'
 import { Masker } from '~/utils/mixins'
 import FancyList from '~/components/FancyList/index.vue'
+import { mapGetters } from 'vuex'
 
 @Component<Home>({
   meta: {
@@ -84,6 +85,9 @@ import FancyList from '~/components/FancyList/index.vue'
   },
   async fetch() {
     this.getCustomers()
+  },
+  computed: {
+    ...mapGetters(['loading']),
   },
 })
 export default class Home extends mixins(Page, Masker) {
@@ -135,6 +139,7 @@ export default class Home extends mixins(Page, Masker) {
 
   async getCustomers() {
     const { data, headers } = await this.$http.getCustomers(this.params)
+    if (!data) return
     this.items = data
     this.totalCountItems = Number(headers['x-total-count'])
   }
