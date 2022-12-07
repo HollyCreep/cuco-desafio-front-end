@@ -1,6 +1,8 @@
 export default {
   ssr: false,
 
+  target: 'static',
+
   head: {
     titleTemplate: 'CUCOHealth - %s',
     title: 'CUCOHealth',
