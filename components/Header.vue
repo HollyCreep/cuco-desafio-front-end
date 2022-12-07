@@ -3,7 +3,7 @@
     <div class="ch-header-content ch-container">
       <v-row align="center" justify="space-between">
         <v-col cols="auto" sm="auto">
-          <nuxt-link to="/">
+          <nuxt-link to="/" aria-label="Company logo">
             <v-img :src="require('@/assets/logo.png')" max-height="40" max-width="140" contain></v-img>
           </nuxt-link>
         </v-col>

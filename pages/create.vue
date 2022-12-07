@@ -26,8 +26,8 @@ export default class CreateCustomerPage extends Page {
     meta: [
       {
         hid: 'description',
-        name: 'Novo Cliente',
-        content: 'My custom description',
+        name: 'description',
+        content: 'Novo Cliente',
       },
     ],
   }

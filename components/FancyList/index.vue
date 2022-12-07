@@ -3,7 +3,13 @@
     <li key="fancy-item-header" class="px-md-8">
       <v-row class="body--text" no-gutters justify="space-between" align="center">
         <v-col cols="6" md="auto" class="d-flex align-center">
-          <v-checkbox color="secondary" v-model="selectAll" @change="handleToggleAll"></v-checkbox>
+          <v-checkbox
+            color="secondary"
+            v-model="selectAll"
+            @change="handleToggleAll"
+            aria-label="Toggle Select All Items"
+            name="Toggle Select All Items"
+          ></v-checkbox>
           <label v-show="isMobile">{{$t('s.select_all')}}</label>
         </v-col>
         <v-col cols="4" v-if="!isMobile">{{$t('n.name')}}</v-col>

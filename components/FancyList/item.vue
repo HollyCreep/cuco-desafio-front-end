@@ -1,6 +1,6 @@
 <template>
   <v-card class="pa-8">
-    <v-row class="body--text" no-gutters justify-md="space-between" align="center">
+    <v-row class="body--text" no-gutters justify-md="space-between" align-md="center">
       <v-col cols="auto">
         <v-checkbox
           color="secondary"
@@ -8,9 +8,11 @@
           @change="$emit('update:selected', innerSelected)"
           hide-details
           class="py-0 my-0"
+          aria-label="Toggle Select"
+          name="Toggle Select"
         ></v-checkbox>
       </v-col>
-      <v-col cols="10" md="4" class="d-flex flex-column">
+      <v-col cols="10" md="4" class="d-flex flex-column mb-4 mb-md-0">
         <span class="heading--text font-weight-bold">{{customer.name}}</span>
         <span class="text-subtitle-2">{{customer.cpf}}</span>
       </v-col>

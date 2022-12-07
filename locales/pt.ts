@@ -33,6 +33,7 @@ const pt = {
   r: {},
   s: {
     save: 'Salvar',
+    search: 'Digite aqui um nome ou CPF',
     select_all: 'Selecionar todos',
   },
   t: {},

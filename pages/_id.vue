@@ -31,8 +31,8 @@ export default class Home extends Page {
     meta: [
       {
         hid: 'description',
-        name: 'Editar Cliente',
-        content: 'My custom description',
+        name: 'description',
+        content: 'Editar Cliente',
       },
     ],
   }

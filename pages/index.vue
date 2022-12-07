@@ -15,7 +15,8 @@
           hide-details
           :append-icon="mdiMagnify"
           class="font-inter body-1 font-weight-regular mb-10"
-          label="Digite aqui um nome ou CPF"
+          :label="$t('s.search')"
+          name="search-input"
           single-line
           solo
           @input="handleSearch"
@@ -96,8 +97,8 @@ export default class Home extends mixins(Page, Masker) {
     meta: [
       {
         hid: 'description',
-        name: 'Clientes',
-        content: 'My custom description',
+        name: 'description',
+        content: 'Home - Listagem de Clientes',
       },
     ],
   }

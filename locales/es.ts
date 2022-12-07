@@ -35,6 +35,7 @@ const es: Translator = {
   r: {},
   s: {
     save: 'Ahorrar',
+    search: 'Ingrese un nombre o CPF aquí',
     select_all: 'Seleccionar todo',
   },
   t: {},

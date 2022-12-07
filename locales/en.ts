@@ -33,6 +33,7 @@ const en: Translator = {
   r: {},
   s: {
     save: 'Save',
+    search: 'Enter a name or CPF here',
     select_all: 'Select all',
   },
   t: {},
