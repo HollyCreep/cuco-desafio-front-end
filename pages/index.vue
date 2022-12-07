@@ -16,10 +16,8 @@
           :append-icon="mdiMagnify"
           class="font-inter body-1 font-weight-regular mb-10"
           label="Digite aqui um nome ou CPF"
-          filled
           single-line
           solo
-          background-color="white"
           @input="handleSearch"
         ></v-text-field>
       </template>
@@ -29,7 +27,7 @@
       </template>
 
       <template #footer="{pagination: {pageStart, pageStop, itemsLength}}">
-        <div class="d-flex align-center mt-2" v-if="items.length">
+        <div class="d-flex align-center mt-4" v-if="items.length">
           <span class="body--text text-body-2">{{pageStart + 1}} - {{pageStop}} de {{itemsLength}}</span>
           <v-spacer />
           <v-pagination
@@ -42,7 +40,7 @@
       </template>
       <template #no-data>
         <v-layout row justify-center v-show="!$fetch.pending">
-          <p class="text-body">Não foram encontrados nenhum registro para a busca atual.</p>
+          <p class="text-body" v-text="$t('messages.no_data')"></p>
         </v-layout>
       </template>
     </v-data-iterator>
@@ -52,13 +50,15 @@
         <v-avatar size="48" color="warning">
           <v-icon color="warning darken-1" size="20">{{mdiAlert}}</v-icon>
         </v-avatar>
-        <v-card-title class="justify-center font-inter text-subtitle-1 font-weight-500">Atenção</v-card-title>
+        <v-card-title
+          class="justify-center font-inter text-subtitle-1 font-weight-500"
+        >{{$t('c.caution')}}</v-card-title>
 
-        <v-card-text>Você tem certeza que quer excluir os cliente(s) selecionado(s)?</v-card-text>
+        <v-card-text>{{$t('messages.delete_confirm')}}</v-card-text>
 
         <v-card-actions>
-          <v-btn class="flex-grow-1" color="body" text @click="closeModal">Cancelar</v-btn>
-          <v-btn class="flex-grow-1" color="error" @click="deleteCustomers">Excluir</v-btn>
+          <v-btn class="flex-grow-1" color="body" text @click="closeModal">{{$t('c.cancel')}}</v-btn>
+          <v-btn class="flex-grow-1" color="error" @click="deleteCustomers">{{$t('d.delete')}}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

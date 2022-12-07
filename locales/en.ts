@@ -2,14 +2,16 @@ import { Translator } from './pt'
 
 const en: Translator = {
   a: {},
-  b: {},
+  b: { birth_date: 'Birth date' },
   c: {
-    create_customer: 'New @:c.customer',
+    cancel: 'Cancel',
+    caution: 'Caution',
     customer: 'Customer | Customer',
   },
-  d: {},
+  d: { delete: 'Delete' },
   e: {
-    edit_customer: 'Edit @:c.customer',
+    edit: 'Edit',
+    edit_customer: '@:e.edit @:c.customer',
   },
   f: {},
   g: {},
@@ -19,12 +21,20 @@ const en: Translator = {
   k: {},
   l: {},
   m: {},
-  n: {},
+  n: {
+    new_customer: 'New @:c.customer',
+    name: 'Name',
+  },
   o: {},
-  p: {},
+  p: {
+    phone: 'Phone',
+  },
   q: {},
   r: {},
-  s: {},
+  s: {
+    save: 'Save',
+    select_all: 'Select all',
+  },
   t: {},
   u: {},
   v: {},
@@ -33,8 +43,15 @@ const en: Translator = {
   y: {},
   z: {},
 
-  errors: {},
+  errors: {
+    delete: 'It was not possible to exclude {0}',
+  },
 
-  messages: {},
+  messages: {
+    no_data: 'No data found.',
+    edit: '@:c.customer successfully edited!',
+    delete: '{0} successfully deleted!',
+    delete_confirm: 'Are you sure you want to delete the selected customer?',
+  },
 }
 export default en

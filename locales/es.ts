@@ -2,14 +2,18 @@ import { Translator } from './pt'
 
 const es: Translator = {
   a: {},
-  b: {},
+  b: { birth_date: 'Fecha de nacimiento' },
   c: {
-    create_customer: 'Novo @:c.customer',
+    cancel: 'cancelar',
+    caution: 'Atenção',
     customer: 'Cliente | Clientes',
   },
-  d: {},
+  d: {
+    delete: 'Eliminar',
+  },
   e: {
-    edit_customer: 'Editar @:c.customer',
+    edit: 'Editar',
+    edit_customer: '@:e.edit @:c.customer',
   },
   f: {},
   g: {},
@@ -19,12 +23,20 @@ const es: Translator = {
   k: {},
   l: {},
   m: {},
-  n: {},
+  n: {
+    new_customer: 'Nuevo @:c.customer',
+    name: 'Nombre',
+  },
   o: {},
-  p: {},
+  p: {
+    phone: 'Teléfono',
+  },
   q: {},
   r: {},
-  s: {},
+  s: {
+    save: 'Ahorrar',
+    select_all: 'Seleccionar todo',
+  },
   t: {},
   u: {},
   v: {},
@@ -33,8 +45,15 @@ const es: Translator = {
   y: {},
   z: {},
 
-  errors: {},
-
-  messages: {},
+  errors: {
+    delete: 'No se pudo eliminar el{0}',
+  },
+  messages: {
+    no_data: 'No se encontraron registros para la búsqueda actual.',
+    edit: '@:c.customer editado con éxito!',
+    delete: '{0} excluído con éxito!',
+    delete_confirm:
+      '¿Está seguro de que desea eliminar los clientes seleccionados??',
+  },
 }
 export default es

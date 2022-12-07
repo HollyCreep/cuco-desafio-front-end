@@ -17,7 +17,7 @@ import { IRouteMetaConfig } from '~/types/interfaces'
   },
   meta: {
     config: {
-      name: 'c.create_customer',
+      name: 'n.new_customer',
     } as IRouteMetaConfig,
   },
 })

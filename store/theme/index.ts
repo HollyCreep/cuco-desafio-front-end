@@ -3,7 +3,6 @@ import { RootState } from '../-types'
 import { Theme } from '@/types'
 import ThemeMutations from './-mutations'
 export interface ThemeState {
-  dark: Boolean
   themes: {
     dark: Theme
     light: Theme
@@ -11,19 +10,18 @@ export interface ThemeState {
 }
 
 export const state = (): ThemeState => ({
-  dark: false,
   themes: {
     dark: {
-      primary: '#2095F2',
+      primary: '#212121',
       secondary: '#EE2279',
       tertiary: '#12A454',
       error: '#E52E4D',
-      heading: '#363F5F',
-      body: '#969CB2',
-      background: '#F0F2F5',
+      heading: '#FFF',
+      body: '#FAFAFA',
+      background: '#424242',
       warning: {
-        base: '#FEEBC8',
-        darken1: '#DD6B20',
+        base: '#FFECB3',
+        darken1: '#FF8F00',
       },
     },
     light: {
@@ -42,11 +40,7 @@ export const state = (): ThemeState => ({
   },
 })
 
-export const mutations: MutationTree<ThemeState> = {
-  [ThemeMutations.TOOGLE_DARK_THEME](state) {
-    state.dark = !state.dark
-  },
-}
+export const mutations: MutationTree<ThemeState> = {}
 export const getters: GetterTree<ThemeState, RootState> = {
   getTheme: (state) => state.themes,
 }

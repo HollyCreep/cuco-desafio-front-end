@@ -13,6 +13,7 @@ import Actions from './-actions'
 import { IRouteMetaConfig } from '~/types/interfaces'
 
 export interface RootState {
+  allFeatures: Boolean
   loading: Boolean
   locale: Locale
   showCreateCustomerButton: Boolean
@@ -20,11 +21,13 @@ export interface RootState {
 }
 
 export interface Getters {
+  showAllFeatures: (state: State) => Boolean
   locale: (state: State) => Locale
   loading: (state: State) => Boolean
 }
 
 export interface MutationsInterface {
+  [Mutations.UNLOCK_FEATURES](s: State): void
   [Mutations.SET_LOCALE](s: State, p: Locale): void
   [Mutations.SET_LOADING](s: State, p: Boolean): void
   [Mutations.SET_ROUTE_FRINDLY_NAME](s: State, p?: Page): void

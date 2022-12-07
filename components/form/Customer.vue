@@ -6,8 +6,8 @@
           <TextFieldWithValidation
             v-model="form.name"
             v-bind="default_field_style"
-            :label="$t('c.complete_name')"
-            :name="$t('c.complete_name')"
+            :label="$t('n.name')"
+            :name="$t('n.name')"
             rules="required|min:5"
           ></TextFieldWithValidation>
         </v-col>
@@ -27,8 +27,8 @@
             v-model="form.birthdate"
             v-bind="default_field_style"
             v-mask="['##/##/####']"
-            :label="'Data nascimento'"
-            :name="'Data nascimento'"
+            :label="$t('b.birth_date')"
+            :name="$t('b.birth_date')"
             rules="required|date"
           />
         </v-col>
@@ -37,8 +37,8 @@
             v-model="form.phone"
             v-bind="default_field_style"
             v-mask="['(##) ####-####', '(##) #####-####']"
-            :label="$tc('p.phone')"
-            :name="$tc('p.phone')"
+            :label="$t('p.phone')"
+            :name="$t('p.phone')"
             hint="Com DDD e apenas números"
             type="tel"
           />
@@ -46,14 +46,14 @@
       </v-row>
     </v-form>
     <v-layout row justify-end>
-      <v-btn class="mr-8 body--text" :disabled="loading" text nuxt to="/">Cancelar</v-btn>
+      <v-btn class="mr-8 body--text" :disabled="loading" text nuxt to="/">{{$t('c.cancel')}}</v-btn>
       <v-btn
         color="tertiary"
         class="white--text font-weight-semi-bold"
         :disabled="!valid"
         :loading="loading"
         @click="handleSubmit"
-      >Salvar</v-btn>
+      >{{$t('s.save')}}</v-btn>
     </v-layout>
   </validation-observer>
 </template>
@@ -108,7 +108,7 @@ export default class FormCustomer extends BaseForm {
     this.clear()
     this.loading = false
 
-    this.$toast.success('Cliente editado com sucesso!')
+    this.$toast.success(this.$t('messages.edit'))
     this.$router.push('/')
   }
 

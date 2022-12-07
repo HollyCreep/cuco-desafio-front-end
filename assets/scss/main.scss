@@ -3,6 +3,12 @@
 @import './vuetify/-overrides.scss';
 
 .v-application {
+  &.ch-g-scale {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+
   .ch-container {
     width: calc(100% - #{$container-spacing} * 2);
     @include container-base-styles;

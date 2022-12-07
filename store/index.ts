@@ -11,6 +11,7 @@ import Mutations from './-mutations'
 import Actions from './-actions'
 
 export const state = (): RootState => ({
+  allFeatures: false,
   loading: false,
   locale: Locales.pt,
   routeFriendlyName: undefined,
@@ -18,6 +19,7 @@ export const state = (): RootState => ({
 })
 
 export const getters: GetterTree<State, State> & Getters = {
+  showAllFeatures: (state) => state.allFeatures,
   loading: (state) => state.loading,
   locale: (state) => state.locale,
   routeFriendlyName: (state) => state.routeFriendlyName,
@@ -25,6 +27,9 @@ export const getters: GetterTree<State, State> & Getters = {
 }
 
 export const mutations: MutationTree<State> & MutationsInterface = {
+  [Mutations.UNLOCK_FEATURES](state) {
+    state.allFeatures = true
+  },
   [Mutations.SET_LOADING](state, payload) {
     state.loading = payload
   },

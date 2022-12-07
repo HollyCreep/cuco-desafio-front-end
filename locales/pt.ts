@@ -1,13 +1,17 @@
 const pt = {
   a: {},
-  b: {},
+  b: { birth_date: 'Data de Nascimento' },
   c: {
-    create_customer: 'Novo @:c.customer',
+    cancel: 'Cancelar',
+    caution: 'Atenção',
     customer: 'Cliente | Clientes',
   },
-  d: {},
+  d: {
+    delete: 'Excluir',
+  },
   e: {
-    edit_customer: 'Editar @:c.customer',
+    edit: 'Editar',
+    edit_customer: '@:e.edit @:c.customer',
   },
   f: {},
   g: {},
@@ -17,12 +21,20 @@ const pt = {
   k: {},
   l: {},
   m: {},
-  n: {},
+  n: {
+    new_customer: 'Novo @:c.customer',
+    name: 'Nome',
+  },
   o: {},
-  p: {},
+  p: {
+    phone: 'Telefone',
+  },
   q: {},
   r: {},
-  s: {},
+  s: {
+    save: 'Salvar',
+    select_all: 'Selecionar todos',
+  },
   t: {},
   u: {},
   v: {},
@@ -35,7 +47,11 @@ const pt = {
     delete: 'Não foi possível excluir o {0}',
   },
   messages: {
+    no_data: 'Não foram encontrados nenhum registro para a busca atual.',
+    edit: '@:c.customer editado com sucesso!',
     delete: '{0} excluído com sucesso!',
+    delete_confirm:
+      'Você tem certeza que quer excluir os cliente(s) selecionado(s)?',
   },
 }
 export default pt

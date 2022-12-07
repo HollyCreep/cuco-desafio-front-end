@@ -1,16 +1,18 @@
 <template>
   <TransitionGroup name="list" tag="ul" mode="out-in" class="ch-fancy-list">
-    <li style="padding: 0 30px" key="fancy-item-header">
+    <li key="fancy-item-header" class="px-md-8">
       <v-row class="body--text" no-gutters justify="space-between" align="center">
-        <v-col cols="auto">
+        <v-col cols="6" md="auto" class="d-flex align-center">
           <v-checkbox color="secondary" v-model="selectAll" @change="handleToggleAll"></v-checkbox>
+          <label v-show="isMobile">{{$t('s.select_all')}}</label>
         </v-col>
-        <v-col cols="10" md="4">Nome</v-col>
-        <v-col cols="12" md="3">Data de Nascimento</v-col>
-        <v-col cols="12" md="2">Telefone</v-col>
-        <v-col cols="12" md="auto">
-          <v-btn color="error" @click="handleDeleteItems">
-            <v-icon>{{mdiTrashCan}}</v-icon>Excluir
+        <v-col cols="4" v-if="!isMobile">{{$t('n.name')}}</v-col>
+        <v-col cols="3" v-if="!isMobile">{{$t('b.birth_date')}}</v-col>
+        <v-col cols="2" v-if="!isMobile">{{$t('p.phone')}}</v-col>
+        <v-col cols="6" md="auto">
+          <v-btn color="error" @click="handleDeleteItems" class="float-right">
+            <v-icon>{{mdiTrashCan}}</v-icon>
+            {{$t('d.delete')}}
           </v-btn>
         </v-col>
       </v-row>
@@ -24,7 +26,7 @@
 <script lang="ts">
 import { Component, Prop } from 'vue-property-decorator'
 import { ICustomer } from '~/types/interfaces'
-import { BaseComponent } from '~/utils/classes'
+import { ResponsiveComponent } from '~/utils/classes'
 import FancyListItem from './item.vue'
 import { mdiTrashCan } from '@mdi/js'
 import { PropType } from 'vue/types/v3-component-props'
@@ -34,7 +36,7 @@ import { PropType } from 'vue/types/v3-component-props'
     FancyListItem,
   },
 })
-export default class FancyList extends BaseComponent {
+export default class FancyList extends ResponsiveComponent {
   @Prop({ type: Array as PropType<ICustomer[]>, required: true })
   readonly items!: ICustomer[]
 

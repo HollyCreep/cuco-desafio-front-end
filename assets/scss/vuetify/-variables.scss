@@ -1,5 +1,5 @@
 /* --------------------------------- Global --------------------------------- */
-$font-size-root: 16px;
+$font-size-root: var(--font-size);
 $body-font-family: var(--body-font-family);
 $heading-font-family: var(--heading-font-family);
 

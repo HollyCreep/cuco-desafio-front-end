@@ -24,7 +24,8 @@
           nuxt
           :to="localePath({ name: routes.EDIT_CUSTOMER, params: { id: customer.id }})"
         >
-          <v-icon>{{mdiPencil}}</v-icon>Editar
+          <v-icon>{{mdiPencil}}</v-icon>
+          {{$t('e.edit')}}
         </v-btn>
       </v-col>
     </v-row>

@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="{'ch-g-scale': isGrayScale}">
     <Header class="pb-16" />
     <v-main class="background">
       <div class="ch-container fill-height">
@@ -15,14 +15,49 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import Mutations from '~/store/-mutations'
 
 @Component({
   computed: {
-    ...mapGetters(['loading']),
+    ...mapGetters({
+      loading: 'loading',
+      isGrayScale: 'accesibility/getGrayScale',
+    }),
+  },
+  methods: {
+    ...mapMutations({
+      unlockFeatures: Mutations.UNLOCK_FEATURES,
+    }),
   },
 })
-export default class DefaultLayout extends Vue {}
+export default class DefaultLayout extends Vue {
+  unlockFeatures!: () => void
+
+  created() {
+    this.onKonamiCode()
+  }
+  onKonamiCode() {
+    let c = 0
+    const kCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
+    document.addEventListener('keydown', (e) => {
+      c =
+        e.keyCode == kCode[c]
+          ? c + 1
+          : e.keyCode - 38
+          ? 0
+          : c
+          ? kCode[c - 1] == 38
+            ? c
+            : 0
+          : 0
+      if (c == kCode.length) {
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+        this.unlockFeatures()
+      }
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
